@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DummyJSON Users & Recipes App
 
-## Getting Started
+This project is a web application that accumulates information about users and recipes from [DummyJSON](https://dummyjson.com/docs).
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Navigation Menu
+- Contains links to different pages and displays the logged-in user's avatar.
+- If the user is not authenticated, the menu only includes a link to the authentication page.
+
+### Search
+- A single text input field (with an optional search button) that allows searching for users or recipes depending on the current page.
+- Users and recipes can be found either by a string value (as per the DummyJSON API documentation) or by ID.
+
+### Pagination
+- All lists of data (users, recipes) are paginated.
+
+## Pages
+
+### Home Page
+- By default, assumes the user is not logged in.
+- Displays a message prompting the user to authenticate.
+- The navigation menu only includes the authentication link.
+
+### Authentication Page
+- Contains a form with input fields required for authentication via DummyJSON.
+- Use any user credentials available in DummyJSON for authentication.
+- After successful authentication:
+    - The navigation menu updates to include links to the "Users" and "Recipes" pages.
+    - The logged-in user's avatar (from the API response) is displayed in the menu.
+
+### Users Page
+- Includes:
+    - A navigation menu
+    - A search field
+    - A list of users with at least three fields displayed from the API response
+- Clicking on a user navigates to their detailed profile page.
+- The user profile page includes:
+    - 7-10 details about the user
+    - A list of their recipes
+    - Clicking on a recipe navigates to its detailed page.
+
+### Recipes Page
+- Includes:
+    - A navigation menu
+    - A search field
+    - A list of recipes displaying only their title and tags
+- Clicking on a recipe navigates to a detailed recipe page, which includes:
+    - Full details of the recipe
+    - A link to the author's profile
+- Clicking on a tag filters/searches for all recipes containing the same tag.
+
+## Design
+- The design is free-form and can be customized as desired.
+- All lists of data are paginated for better user experience.
+
+## Technologies Used
+- Next.js 15
+- Server Actions for API requests
+- Authentication using localStorage for token storage
+- App Router for navigation
+- API data fetched from [DummyJSON](https://dummyjson.com)
+- No Redux (state management handled with Next.js best practices)
+
+Feel free to contribute or customize the project as needed! 🚀
+
+### Installation & Setup
+
+1. Clone the repository:
+```sh
+git clone https://github.com/your-repo.git
+cd your-repo
 ```
+2. Install dependencies:
+```sh
+   npm install
+```
+3. Start the development server:
+```sh
+   npm run dev
+```
+4. Open your browser and go to 
+`http://localhost:3000`.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## License
+This project is created for educational purposes and does not include a commercial license.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Author
+- Mykhailo Maietskyi
+- damaietskyi@gmail.com
+- 

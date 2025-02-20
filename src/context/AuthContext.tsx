@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import {clearAuthData, retrieveTokenFromStorage} from "@/app/service/helpers";
+import {clearAuthData, retrieveTokenFromStorage} from "@/service/helpers";
 
 interface User {
     firstName: string;
@@ -16,7 +16,6 @@ interface AuthContextType {
     handleLogout: () => void;
 }
 
-// Створення контексту для аутентифікації
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
@@ -46,7 +45,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-// Хук для доступу до контексту
 export const useAuth = () => {
     const context = useContext(AuthContext);
     if (!context) {

@@ -1,12 +1,12 @@
 import axios from "axios";
 import {retrieveTokenFromStorage, setTokenToStorage} from "./helpers";
+import {getCookie} from "cookies-next";
+import {retrieveTokenFromServer} from "@/service/helper-use-server";
 
-// Створення екземпляра axios з базовим URL
 const axiosInstance = axios.create({
     baseURL: "https://dummyjson.com/auth",
 });
 
-// Перехоплювач запитів для додавання токена в заголовки
 axiosInstance.interceptors.request.use(
     async (config) => {
         const token = retrieveTokenFromStorage<string>("accessToken");
@@ -20,7 +20,6 @@ axiosInstance.interceptors.request.use(
     }
 );
 
-// Перехоплювач відповідей для обробки помилок
 axiosInstance.interceptors.response.use(
     (response) => {
         return response;
@@ -28,10 +27,14 @@ axiosInstance.interceptors.response.use(
     async (error) => {
         const originalRequest = error.config;
 
-        // Перевіряємо, чи є помилка авторизації (401)
         if (error.response?.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
-            const refreshToken = retrieveTokenFromStorage<string>("refreshToken");
+            let refreshToken: string | null;
+            if (typeof window === "undefined") {
+                refreshToken = await retrieveTokenFromServer("refreshToken");
+            } else {
+                refreshToken = getCookie("refreshToken") as string | null;
+            }
 
             if (!refreshToken) {
                 return Promise.reject(error);
@@ -47,7 +50,10 @@ axiosInstance.interceptors.response.use(
                 originalRequest.headers["Authorization"] = `Bearer ${data.accessToken}`;
                 return axiosInstance(originalRequest);
             } catch (err) {
-                console.error("Не вдалося оновити токен", err);
+                console.error("Failed to update token", err);
+                setTokenToStorage("accessToken", "");
+                setTokenToStorage("refreshToken", "");
+                window.location.href = "/login";
                 return Promise.reject(error);
             }
         }

@@ -1,0 +1,41 @@
+.details-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #eaffea;
+}
+
+.details-result-tags {
+    text-decoration: none;
+    color: #456845;
+    border: 2px solid #456845;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.details-result-tags:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+.time-calories{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    align-items: center;
+    border-bottom: 1px solid #456845;
+}
+
+.button-go-back{
+    background-color: #456845;
+    margin: 20px 0;
+    text-decoration: none;
+    border: 2px solid #456845;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+img {
+    width:300px;
+}
+
+

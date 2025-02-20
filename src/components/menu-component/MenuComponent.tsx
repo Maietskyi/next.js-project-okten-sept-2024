@@ -1,9 +1,9 @@
 "use client";
-import "./Menu.css"
+import "./MenuComponent.css"
 import Link from "next/link";
 import {useAuth} from "@/context/AuthContext";
 
-export const Menu = () => {
+export const MenuComponent = () => {
     const {isAuthenticated, user, handleLogout} = useAuth();
 
     return (

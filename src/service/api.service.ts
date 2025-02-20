@@ -1,11 +1,10 @@
-import axiosInstance from "@/app/service/axiosInstance";
-import {setTokenToStorage} from "@/app/service/helpers";
-import {IUser} from "@/app/models/IUser";
-import {IRecipes} from "@/app/models/IRecipes";
-import {IUserToken} from "@/app/models/IUserToken";
+import axiosInstance from "@/service/axiosInstance";
+import {setTokenToStorage} from "@/service/helpers";
+import {IUser} from "@/models/IUser";
+import {IRecipes} from "@/models/IRecipes";
+import {IUserToken} from "@/models/IUserToken";
 
-
-export const loginUser = async (username: string, password: string): Promise<IUserToken> => {
+export const authLoginUser = async (username: string, password: string): Promise<IUserToken> => {
     try {
         const {data} = await axiosInstance.post("/login", {username, password});
         setTokenToStorage("accessToken", data.accessToken);
@@ -31,7 +30,7 @@ export const getAllUsers = async (page: number, query: string): Promise<{ users:
         console.log('getAllUsers', data);
         return data;
     } catch (error) {
-        console.error("Помилка отримання користувачів:", error);
+        console.error("Error getting user:", error);
         throw error;
     }
 };
@@ -42,7 +41,7 @@ export const getUserById = async (id: number): Promise<IUser> => {
         console.log('getUserById', data);
         return data;
     } catch (error) {
-        console.error("Помилка отримання користувача:", error);
+        console.error("Error getting user:", error);
         throw error;
     }
 };
@@ -61,7 +60,7 @@ export const getAllRecipes = async (page: number, query: string): Promise<{
         console.log('getAllRecipes', data)
         return data;
     } catch (error) {
-        console.error("Помилка отримання рецептів:", error);
+        console.error("Error getting recipes:", error);
         throw error;
     }
 };
@@ -74,7 +73,7 @@ export const getRecipesByTagApi = async (tag: string, page: number): Promise<{ r
         console.log('getRecipesByTagApi', data)
         return data;
     } catch (error) {
-        console.error("Помилка отримання рецептів за тегом:", error);
+        console.error("Error retrieving recipes by tag:", error);
         throw error;
     }
 };
@@ -85,12 +84,12 @@ export const getRecipeById = async (id: number): Promise<IRecipes> => {
         console.log('getRecipeById', data);
         return data;
     } catch (error) {
-        console.error("Помилка отримання рецепта:", error);
+        console.error("Error getting recipe:", error);
         throw error;
     }
 };
 
-export const getAllRecipesForUser = async (userId: number): Promise<IRecipes[]> => {
+export const getAllRecipesUser = async (userId: number): Promise<IRecipes[]> => {
     try {
         let allRecipes: IRecipes[] = [];
         let skip = 0;

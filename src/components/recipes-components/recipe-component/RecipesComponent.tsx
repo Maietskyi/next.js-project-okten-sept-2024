@@ -1,14 +1,14 @@
-// "use client";
+"use client";
 import {useEffect, useState} from "react";
 import {useRouter, useSearchParams} from "next/navigation";
 import {IRecipes} from "@/models/IRecipes";
 import {getAllRecipes, getRecipesByTagApi} from "@/service/api.service";
-import "./RecipesComponent.css"
 import {SearchComponent} from "@/components/search-component/SearchComponent";
 import {RecipeListComponent} from "@/components/recipes-components/recipe-list-component/RecipeListComponent";
 import {PaginationComponent} from "@/components/pagination-component/PaginationComponent";
+import "./RecipesComponent.css"
 
-const RecipesContainer = () => {
+const RecipesComponent = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
 
@@ -22,7 +22,7 @@ const RecipesContainer = () => {
 
     useEffect(() => {
         fetchRecipes(page, query, tag).catch((error) =>
-            console.error("Помилка отримання рецептів:", error)
+            console.error("\n" + "Error getting recipes:", error)
         );
     }, [page, query, tag]);
 
@@ -89,9 +89,7 @@ const RecipesContainer = () => {
             </ul>
             <PaginationComponent totalPages={totalPages} currentPage={page} onPageChange={handlePageRecipe}/>
         </div>
-    )
-        ;
-    }
-;
+    );
+};
 
-export default RecipesContainer;
+export default RecipesComponent;

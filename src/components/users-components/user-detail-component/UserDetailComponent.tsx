@@ -9,7 +9,6 @@ type Props = {
 };
 
 const UserDetailComponent: FC<Props> = async ({selectedUser, userRecipes}) => {
-    console.log("selectedUser", selectedUser);
 
     return (
         <div className="details-container">

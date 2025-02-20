@@ -27,11 +27,7 @@ const RecipePage: FC<Props> = async ({params}) => {
         console.log('selectedRecipe', selectedRecipe)
         return (
             <div>
-                {selectedRecipe ? (
                     <RecipeDetailComponent selectedRecipe={selectedRecipe} />
-                ) : (
-                    <p>No recipes found.</p>
-                )}
             </div>
         );
     } catch (error) {

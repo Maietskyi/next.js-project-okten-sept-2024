@@ -25,7 +25,6 @@ const UserPage: FC<Props> = async ({params}) => {
         return (
             <div>
                     <UserDetailComponent selectedUser={selectedUser} userRecipes={userRecipes}/>
-                    <p>No user found.</p>
             </div>
         );
     } catch (error) {

@@ -13,13 +13,14 @@
 }
 
 .search-container input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    border-color: #93c893;
+    box-shadow: 0 0 5px rgb(69, 104, 69);
 }
 
 .search-container button {
     padding: 10px 15px;
     transition: background-color 0.3s ease;
+
 }
 
 .error {

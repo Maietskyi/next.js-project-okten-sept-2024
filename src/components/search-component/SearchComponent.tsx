@@ -30,7 +30,7 @@ export const SearchComponent: FC<SearchBarProps> = ({searchType, onSearch, searc
                     }
                 }}
             />
-            <button onClick={handleSearch}>🔎︎</button>
+            <button className="search-button" onClick={handleSearch}>🔎︎</button>
         </div>
     );
 };

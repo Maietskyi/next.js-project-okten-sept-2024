@@ -57,12 +57,10 @@ This project is a web application that accumulates information about users and r
 ## Technologies Used
 - Next.js 15
 - Server Actions for API requests
-- Authentication using localStorage for token storage
+- Authentication using Cookies for token storage
 - App Router for navigation
 - API data fetched from [DummyJSON](https://dummyjson.com)
 - No Redux (state management handled with Next.js best practices)
-
-Feel free to contribute or customize the project as needed! 🚀
 
 ### Installation & Setup
 

@@ -57,12 +57,9 @@ This project is a web application that accumulates information about users and r
 ## Technologies Used
 - Next.js 15
 - Server Actions for API requests
-- Authentication using localStorage for token storage
-- App Router for navigation
+- Authentication using Cookies for token storage
 - API data fetched from [DummyJSON](https://dummyjson.com)
 - No Redux (state management handled with Next.js best practices)
-
-Feel free to contribute or customize the project as needed! 🚀
 
 ### Installation & Setup
 
@@ -86,6 +83,5 @@ cd your-repo
 This project is created for educational purposes and does not include a commercial license.
 
 ## Author
-- Mykhailo Maietskyi
-- damaietskyi@gmail.com
-- 
+- Mykhailo Maietskyi | 098 213 45 81
+- damaietskyi@gmail.com | https://github.com/Maietskyi
